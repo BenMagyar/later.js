@@ -1,5 +1,8 @@
 import React, { createContext, Component } from 'react';
 
+/**
+ *  Simple server-context that does not require state management.
+ */
 export const serverContext = {
   isLoadingRoute: false,
   hasHandledRoute: true,
@@ -7,6 +10,14 @@ export const serverContext = {
 
 const LaterContext = createContext(null);
 
+/**
+ * Creates a LaterContext provider that manages if/when/how routes are updated.
+ *
+ * @param  {Array}     routes       react-router-config route configuration.
+ * @param  {Function}  resolveRoute Function that resolves a route's loadData
+ *                                  property.
+ * @return {Component}              React Later-context provider component.
+ */
 export function createLaterProvider(routes, resolveRoute) {
   class LaterContextProvider extends Component {
 

@@ -9,6 +9,24 @@ import loadRouteData from './loadRouteData';
 import loadRouteComponents from './loadRouteComponents';
 import DefaultDocument from './Document';
 
+
+/**
+ * Renders or redirects a request on the server.
+ *
+ * @param {Object}    options               Render options.
+ * @param {Object}    options.req           Server request.
+ * @param {Object}    options.res           Server response (or an express-like
+ *                                          response object).
+ * @param {Array}     options.routes        react-router-config route configuration.
+ * @param {Object}    options.assets        Assets manifest.
+ * @param {Component} options.document      Alternative document.
+ * @param {Function}  options.createStore   Function that creates a redux store.
+ * @param {Function}  options.resolveRoute  Function that resolves a routes
+ *                                          loadData property.
+ * @param {Function}  options.appendToHead  Function that returns a React
+ *                                          component that will be placed at
+ *                                          the end of the document head.
+ */
 export function render({
   req,
   res,

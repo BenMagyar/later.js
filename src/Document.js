@@ -1,6 +1,18 @@
 import React from 'react';
 import serialize from 'serialize-javascript';
 
+/**
+ * Default Document class that provides some sane defaults.
+ *
+ * @param {Object}   options               Document options.
+ * @param {Object}   options.helmet        Optional React-Helmet override.
+ * @param {Object}   options.assets        Asset manifest.
+ * @param {Object}   options.data          Preloaded data.
+ * @param {String}   options.content       Rendered HTML content.
+ * @param {Function} options.appendToHead  Function that returns a React
+ *                                         component that will be placed at
+ *                                         the end of the document head.
+ */
 const Document = ({ helmet, assets, data, content, appendToHead }) => {
   const htmlAttrs = helmet.htmlAttributes.toComponent();
   const bodyAttrs = helmet.bodyAttributes.toComponent();

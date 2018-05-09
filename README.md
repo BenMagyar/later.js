@@ -16,7 +16,9 @@ passing in the redux store into `getInitialProps` of the parent containers).
 
 later.js aims to fill the gap (or glue together) of
 React/Redux/React-Router as separate libraries and the work required to have
-a complete universal-rendering application.
+a complete universal-rendering application. It is built with razzle in mind,
+so some assumptions are made but it should be somewhat simple to apply to any
+context.
 
 With after.js in mind, I set out to:
 
@@ -52,7 +54,7 @@ npm i --save react \
     - [`options`](#options)
   - [`hydrate([options])`](#hydrateoptions)
     - [`options`](#options-1)
-  - [`connectLink([Component], [eventHandler])`](#connectlinkcomponent-eventhandler)
+  - [`connectLink([Component], [eventHandler], [onError])`](#connectlinkcomponent-eventhandler)
     - [(Un)handled Route Changes](#unhandled-route-changes)
   - [`StatusConsumer`](#statusconsumer)
 
@@ -190,7 +192,7 @@ populate the store/load initial data that was prefetched on the server.
 - `createStore` - Function to create a redux store.
 - `resolveRoute` - Function that converts `loadData` properties to a `Promise`.
 
-### `connectLink([Component], [eventHandler])`
+### `connectLink([Component], [eventHandler], [onError])`
 `connectLink` makes it easy to connect components to the later.js data-loading
 and `asyncComponent`-loading setup. Wrap a component with `connectLink` to
 load the data/components before re-routing.
@@ -200,11 +202,17 @@ and it is a `function`/`Promise` it will call/await the provided handler.
 After the handler is done (and it doesn't return/resolve to `false`!) it will
 route to the `to` property that is provided on the `Component`.
 
+The `onError` function is called when an error occurs. A `routeError` is also
+passed to the child if an error occurs during the fetch.
+
 ```js
 import { connectLink } from 'later.js';
 
-const LoadingLink = ({ to, children, onClick, isRouteLoading}) => (
-  {isRouteLoading ? 'loading' : children}
+const LoadingLink = ({ to, children, onClick, isRouteLoading, routeError}) => (
+  <a href={to} onClick={onClick}>
+    {isRouteLoading ? 'loading' : children}
+    {routeError ? 'error!' : null}
+  </a>
 );
 
 const ConnectedLoadingLink = connectLink(LoadingLink, 'onClick');
@@ -241,6 +249,12 @@ const ProgressIndicator = () => (
   </StatusConsumer>
 );
 ```
+
+### Alternative Document
+The document component used to render the page can be replaced. See the
+[Document](https://github.com/BenMagyar/later.js/blob/master/src/Document.js)
+component provided for what is required though. Make use of react-helmet where
+possible instead.
 
 ## Inspiration
 - [after.js](https://github.com/jaredpalmer/after.js) - later.js is basically

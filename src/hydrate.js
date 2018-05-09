@@ -7,6 +7,16 @@ import loadRouteComponents from './loadRouteComponents';
 import HandleRouteChange from './HandleRouteChange';
 import LaterContext, { createLaterProvider } from './LaterContext';
 
+/**
+ * Hydrates the React application on the client.
+ *
+ * @param  {Object}   options              Hydration options.
+ * @param  {Function} options.createStore  Function that returns a redux store.
+ * @param  {Array}    options.routes       react-router-config routes
+ *                                         configuration.
+ * @param  {Function} options.resolveRoute Function that resolves a route's
+ *                                         loadData property.
+ */
 export function hydrate({ createStore, routes, resolveRoute }) {
     const preloadedState = JSON.parse(
       document.getElementById('preloaded-state').textContent

@@ -1,5 +1,13 @@
 import React from 'react';
 
+/**
+ * Creates an async React component that will be loaded on route change.
+ *
+ * @param  {Function} loader Function that returns a dynamic import of a
+ *                           component.
+ * @return {Component}       Component that will render the dynamic import on
+ *                           load.
+ */
 export function asyncComponent(loader) {
   let Component = null;
 

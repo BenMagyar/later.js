@@ -3,6 +3,11 @@ import { Route, withRouter } from 'react-router';
 import loadRouteComponents from './loadRouteComponents';
 import loadRouteData from './loadRouteData';
 
+
+/**
+ * Handles unmanaged route changes in the React application. Fetching data and
+ * components where necessary.
+ */
 class HandleRouteChange extends Component {
 
   state = {
@@ -11,6 +16,8 @@ class HandleRouteChange extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.location !== nextProps.location) {
+      // Using nextProps and not this.props here in case of some batched state
+      // change?
       if (!nextProps.hasHandledRoute) {
         nextProps.setIsLoadingRoute(true);
         this.setState({ previousLocation: this.props.location });
