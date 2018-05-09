@@ -1,0 +1,25 @@
+{
+  "name": "later.js-basic",
+  "version": "1.0.0",
+  "description": "Basic razzle + later.js application",
+  "main": "index.js",
+  "scripts": {
+    "dev": "razzle start",
+    "build": "razzle build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ben Magyar <me@benmagyar.com>",
+  "license": "MIT",
+  "dependencies": {
+    "later.js": "file:../..",
+    "razzle": "^2.0.0-alpha.12",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "react-router-config": "^1.0.0-beta.4",
+    "react-router-dom": "^4.2.2",
+    "redux": "^4.0.0",
+    "styled-jsx": "^2.2.6"
+  },
+  "devDependencies": {}
+}
