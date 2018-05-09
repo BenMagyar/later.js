@@ -1,6 +1,6 @@
 {
   "name": "later.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Setup util for universal react/redux applications",
   "main": "lib/index.js",
   "scripts": {
@@ -16,6 +16,8 @@
     "lib"
   ],
   "author": "Ben Magyar <me@benmagyar.com>",
+  "homepage": "https://github.com/BenMagyar/later.js#readme",
+  "repository": "github:BenMagyar/later.js",
   "license": "MIT",
   "dependencies": {
     "serialize-javascript": "^1.5.0"
