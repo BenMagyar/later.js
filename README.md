@@ -31,7 +31,8 @@ With after.js in mind, I set out to:
 ## Getting Started
 
 later.js lists all `react-*` / `redux` dependencies as peerDependencies, they
-must be installed first (with later.js).
+must be installed first (with later.js). You can get started even faster with
+[create-later.js-app](https://github.com/BenMagyar/create-later.js-app)!
 
 ```bash
 npm i --save react \
@@ -95,8 +96,8 @@ structured as:
 
 ```js
 Promise.all([
-  resolveRoute(store, loadAbout, { match, req, }),
-  resolveRoute(store, [loadAboutMe], { match, req, }),
+  ...resolveRoute(store, loadAbout, { match, req, }),
+  ...resolveRoute(store, [loadAboutMe], { match, req, }),
 ])
 ```
 
