@@ -257,6 +257,11 @@ The document component used to render the page can be replaced. See the
 component provided for what is required though. Make use of react-helmet where
 possible instead.
 
+## What's left?
+We probably shouldn't re-fetch all the data for a route on a parent -> child 
+route transition where the location change does not cause the parent fetches
+to change. This would reduce a ton of needless requests for some shared state.
+
 ## Inspiration
 - [after.js](https://github.com/jaredpalmer/after.js) - later.js is basically
   a fork of after.js

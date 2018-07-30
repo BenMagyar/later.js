@@ -22,8 +22,8 @@ class HandleRouteChange extends Component {
         nextProps.setIsLoadingRoute(true);
         this.setState({ previousLocation: this.props.location });
         Promise.all([
+            ...loadRouteData(nextProps.routes, nextProps.location, nextProps.resolveRoute),
             loadRouteComponents(nextProps.routes, nextProps.location),
-            loadRouteData(nextProps.routes, nextProps.location, nextProps.resolveRoute),
         ])
           .then(() => {
             nextProps.setIsLoadingRoute(false);

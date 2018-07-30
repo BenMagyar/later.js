@@ -1,6 +1,6 @@
 {
   "name": "later.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Setup util for universal react/redux applications",
   "main": "lib/index.js",
   "scripts": {
