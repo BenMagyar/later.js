@@ -26,6 +26,9 @@ import DefaultDocument from './Document';
  * @param {Function}  options.appendToHead  Function that returns a React
  *                                          component that will be placed at
  *                                          the end of the document head.
+ * @param {Function}  options.renderMethod  Method used to render to a string, 
+ *                                          add wrapped components here as 
+ *                                          the children are provided.
  */
 export function render({
   req,
@@ -36,6 +39,7 @@ export function render({
   createStore,
   resolveRoute,
   appendToHead,
+  renderMethod,
 }) {
   let context = {};
   const Document = document || DefaultDocument;
@@ -47,7 +51,8 @@ export function render({
     loadRouteComponents(routes, req.url)
   ])
     .then(() => {
-      const content = renderToString(
+      renderMethod = renderMethod || renderToString;
+      const content = renderMethod(
         <LaterContext.Provider value={serverContext}>
           <Provider store={store}>
             <StaticRouter location={req.url} context={context}>

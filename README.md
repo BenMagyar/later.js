@@ -155,6 +155,8 @@ or redirect the user (using the `res` option).
 - `resolveRoute` - Function that converts `loadData` properties to a `Promise`.
 - `appendToHead` - *optional* - Function that returns a react-component to
   append to the *default* Document head.
+- `renderMethod` - *optional* - Alternative render method, use this to add 
+  wrapped components
 - `document` - *optional* - [Alternative Document](#alternative-document).
 
 A simple and shortened example:
@@ -192,6 +194,8 @@ populate the store/load initial data that was prefetched on the server.
 - `routes` - Routes configuration.
 - `createStore` - Function to create a redux store.
 - `resolveRoute` - Function that converts `loadData` properties to a `Promise`.
+- `hydrateMethod` - Optional method to override the default react hydration. Add 
+  required provider components here.
 
 ### `connectLink([Component], [eventHandler], [onError])`
 `connectLink` makes it easy to connect components to the later.js data-loading
