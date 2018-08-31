@@ -20,7 +20,7 @@ import LaterContext, { createLaterProvider } from './LaterContext';
  *                                          here to provide the ability to wrap
  *                                          the application. 
  */
-export function hydrate({ createStore, routes, resolveRoute }) {
+export function hydrate({ createStore, routes, resolveRoute, hydrateMethod }) {
     const preloadedState = JSON.parse(
       document.getElementById('preloaded-state').textContent
     );
